@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "NeuroGlide",
+  "version": "1.0.0",
+  "description": "AI-driven cognitive accessibility — transforms complex websites into simple, task-focused experiences.",
+  "permissions": [
+    "sidePanel",
+    "storage",
+    "tabs",
+    "scripting",
+    "activeTab",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel/sidepanel.html"
+  },
+  "action": {
+    "default_title": "NeuroGlide — Cognitive Accessibility"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "lib/dom-analyzer.js",
+        "lib/cognitive-load.js",
+        "lib/smart-focus.js",
+        "lib/guided-form.js",
+        "lib/error-prevention.js",
+        "lib/text-simplifier.js",
+        "lib/multilingual.js",
+        "lib/task-intent.js",
+        "content/content.js"
+      ],
+      "css": ["content/content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

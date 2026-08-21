@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroGlide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <!-- ─── Header ──────────────────────────────────────────────── -->
+  <header class="ng-header">
+    <div class="ng-brand">
+      <span class="ng-brand-icon">✦</span>
+      <span class="ng-brand-name">NeuroGlide</span>
+    </div>
+    <div class="ng-header-actions">
+      <button id="btn-refresh" class="ng-icon-btn" title="Re-analyze page">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.65 2.35A8 8 0 1 0 16 8h-2a6 6 0 1 1-1.76-4.24L10 6h6V0l-2.35 2.35Z" fill="currentColor"/></svg>
+      </button>
+      <button id="btn-settings" class="ng-icon-btn" title="Settings">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.5 1h3l.4 2.2a5.5 5.5 0 0 1 1.3.7L13.3 3l1.5 2.6-1.7 1.5a5.5 5.5 0 0 1 0 1.5l1.7 1.5-1.5 2.6-2.1-.9a5.5 5.5 0 0 1-1.3.7L9.5 15h-3l-.4-2.2a5.5 5.5 0 0 1-1.3-.7L2.7 13l-1.5-2.6 1.7-1.5a5.5 5.5 0 0 1 0-1.5L1.2 5.9 2.7 3.3l2.1.9a5.5 5.5 0 0 1 1.3-.7L6.5 1ZM8 5.5A2.5 2.5 0 1 0 8 10.5 2.5 2.5 0 0 0 8 5.5Z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ─── Page Info Bar ───────────────────────────────────────── -->
+  <div id="page-info" class="ng-page-info">
+    <div class="ng-page-title" id="page-title">Analyzing page...</div>
+    <div class="ng-page-url" id="page-url"></div>
+  </div>
+
+  <!-- ─── Cognitive Load Score ────────────────────────────────── -->
+  <section class="ng-section ng-score-section">
+    <div class="ng-score-card">
+      <div class="ng-score-gauge" id="score-gauge">
+        <svg viewBox="0 0 120 120" class="ng-gauge-svg">
+          <circle cx="60" cy="60" r="52" class="ng-gauge-bg"/>
+          <circle cx="60" cy="60" r="52" class="ng-gauge-fill" id="gauge-fill"
+                  stroke-dasharray="326.7" stroke-dashoffset="326.7"/>
+        </svg>
+        <div class="ng-gauge-center">
+          <span class="ng-gauge-number" id="score-number">—</span>
+          <span class="ng-gauge-label">/ 100</span>
+        </div>
+      </div>
+      <div class="ng-score-info">
+        <div class="ng-score-grade" id="score-grade">Analyzing...</div>
+        <div class="ng-score-desc" id="score-desc">Scanning page structure</div>
+      </div>
+    </div>
+
+    <!-- Score Breakdown -->
+    <div class="ng-breakdown" id="score-breakdown">
+      <button class="ng-breakdown-toggle" id="btn-breakdown">
+        <span>Score Breakdown</span>
+        <svg class="ng-chevron" width="12" height="12" viewBox="0 0 12 12"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </button>
+      <div class="ng-breakdown-content" id="breakdown-content" hidden>
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Quick Stats ─────────────────────────────────────────── -->
+  <section class="ng-section ng-stats-section" id="stats-section">
+    <div class="ng-stats-grid" id="stats-grid">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- ─── Feature Toggles ─────────────────────────────────────── -->
+  <section class="ng-section ng-features-section">
+    <h2 class="ng-section-title">Accessibility Tools</h2>
+
+    <div class="ng-feature-card" id="feature-heatmap">
+      <div class="ng-feature-info">
+        <span class="ng-feature-icon">🗺️</span>
+        <div>
+          <div class="ng-feature-name">Cognitive Load Heatmap</div>
+          <div class="ng-feature-desc">Color-code page sections by difficulty</div>
+        </div>
+      </div>
+      <label class="ng-toggle">
+        <input type="checkbox" id="toggle-heatmap">
+        <span class="ng-toggle-slider"></span>
+      </label>
+    </div>
+
+    <div class="ng-feature-card" id="feature-focus">
+      <div class="ng-feature-info">
+        <span class="ng-feature-icon">🎯</span>
+        <div>
+          <div class="ng-feature-name">Smart Focus Mode</div>
+          <div class="ng-feature-desc">Hide distracting elements</div>
+        </div>
+      </div>
+      <label class="ng-toggle">
+        <input type="checkbox" id="toggle-focus">
+        <span class="ng-toggle-slider"></span>
+      </label>
+    </div>
+
+    <div class="ng-feature-card" id="feature-form">
+      <div class="ng-feature-info">
+        <span class="ng-feature-icon">📋</span>
+        <div>
+          <div class="ng-feature-name">Guided Form Mode</div>
+          <div class="ng-feature-desc">Step-by-step form completion</div>
+        </div>
+      </div>
+      <label class="ng-toggle">
+        <input type="checkbox" id="toggle-form">
+        <span class="ng-toggle-slider"></span>
+      </label>
+    </div>
+
+    <div class="ng-feature-card" id="feature-errors">
+      <div class="ng-feature-info">
+        <span class="ng-feature-icon">🛡️</span>
+        <div>
+          <div class="ng-feature-name">Error Prevention</div>
+          <div class="ng-feature-desc">Catch mistakes before submitting</div>
+        </div>
+      </div>
+      <label class="ng-toggle">
+        <input type="checkbox" id="toggle-errors">
+        <span class="ng-toggle-slider"></span>
+      </label>
+    </div>
+
+    <div class="ng-feature-card" id="feature-simplify">
+      <div class="ng-feature-info">
+        <span class="ng-feature-icon">✨</span>
+        <div>
+          <div class="ng-feature-name">Simplify Page</div>
+          <div class="ng-feature-desc">Rewrite complex text in plain language</div>
+        </div>
+      </div>
+      <button class="ng-action-btn" id="btn-simplify">Simplify</button>
+    </div>
+  </section>
+
+  <!-- ─── Task Intent ─────────────────────────────────────────── -->
+  <section class="ng-section ng-task-section">
+    <h2 class="ng-section-title">Task Navigator</h2>
+    <div class="ng-task-input-wrap">
+      <input type="text" id="task-input" class="ng-task-input"
+             placeholder="What do you want to accomplish?">
+      <button id="btn-task" class="ng-task-btn" title="Generate task plan">→</button>
+    </div>
+    <div id="task-result" class="ng-task-result" hidden>
+      <div class="ng-task-summary" id="task-summary"></div>
+      <ol class="ng-task-steps" id="task-steps">
+        <!-- Populated by JS -->
+      </ol>
+    </div>
+  </section>
+
+  <!-- ─── Language Selector ───────────────────────────────────── -->
+  <section class="ng-section ng-lang-section">
+    <h2 class="ng-section-title">Language</h2>
+    <select id="lang-select" class="ng-lang-select">
+      <option value="en">🇺🇸 English</option>
+      <option value="es">🇪🇸 Español</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="hi">🇮🇳 हिन्दी</option>
+      <option value="ar">🇸🇦 العربية</option>
+      <option value="zh">🇨🇳 中文</option>
+      <option value="ja">🇯🇵 日本語</option>
+      <option value="pt">🇧🇷 Português</option>
+      <option value="ko">🇰🇷 한국어</option>
+      <option value="ta">🇮🇳 தமிழ்</option>
+      <option value="te">🇮🇳 తెలుగు</option>
+      <option value="bn">🇧🇩 বাংলা</option>
+    </select>
+  </section>
+
+  <!-- ─── Settings Panel (hidden by default) ──────────────────── -->
+  <section class="ng-section ng-settings-section" id="settings-panel" hidden>
+    <h2 class="ng-section-title">Settings</h2>
+    <div class="ng-setting-row">
+      <label class="ng-setting-label">Difficulty Level</label>
+      <select id="difficulty-select" class="ng-setting-select">
+        <option value="simple">Simple — Minimal detail</option>
+        <option value="standard" selected>Standard — Balanced</option>
+        <option value="detailed">Detailed — Full information</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- ─── Footer ──────────────────────────────────────────────── -->
+  <footer class="ng-footer">
+    <a href="#" id="btn-dashboard" class="ng-footer-link">📊 Analytics Dashboard</a>
+    <span class="ng-footer-version">v1.0.0</span>
+  </footer>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

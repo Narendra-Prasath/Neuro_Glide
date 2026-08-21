@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroGlide — Analytics Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <!-- ─── Header ──────────────────────────────────────────────── -->
+  <header class="dash-header">
+    <div class="dash-brand">
+      <span class="dash-brand-icon">✦</span>
+      <span class="dash-brand-name">NeuroGlide</span>
+      <span class="dash-brand-tag">Analytics Dashboard</span>
+    </div>
+    <div class="dash-header-actions">
+      <button id="btn-export" class="dash-btn dash-btn-secondary">📥 Export Data</button>
+      <button id="btn-clear" class="dash-btn dash-btn-danger">🗑️ Clear History</button>
+    </div>
+  </header>
+
+  <!-- ─── Overview Cards ──────────────────────────────────────── -->
+  <section class="dash-section">
+    <div class="dash-overview-grid" id="overview-grid">
+      <div class="dash-overview-card">
+        <div class="dash-ov-icon">📊</div>
+        <div class="dash-ov-value" id="ov-pages">0</div>
+        <div class="dash-ov-label">Pages Analyzed</div>
+      </div>
+      <div class="dash-overview-card">
+        <div class="dash-ov-icon">📈</div>
+        <div class="dash-ov-value" id="ov-avg-score">—</div>
+        <div class="dash-ov-label">Average Score</div>
+      </div>
+      <div class="dash-overview-card">
+        <div class="dash-ov-icon">🏆</div>
+        <div class="dash-ov-value" id="ov-best-score">—</div>
+        <div class="dash-ov-label">Best (Easiest)</div>
+      </div>
+      <div class="dash-overview-card">
+        <div class="dash-ov-icon">⚠️</div>
+        <div class="dash-ov-value" id="ov-worst-score">—</div>
+        <div class="dash-ov-label">Worst (Hardest)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Score Distribution Chart ────────────────────────────── -->
+  <section class="dash-section">
+    <h2 class="dash-section-title">Cognitive Load Distribution</h2>
+    <div class="dash-chart-container">
+      <div class="dash-bar-chart" id="score-distribution">
+        <!-- Populated by JS -->
+      </div>
+      <div class="dash-chart-legend">
+        <span class="dash-legend-item"><span class="dash-legend-dot" style="background: #10b981;"></span> Easy (0-30)</span>
+        <span class="dash-legend-item"><span class="dash-legend-dot" style="background: #fbbf24;"></span> Moderate (31-55)</span>
+        <span class="dash-legend-item"><span class="dash-legend-dot" style="background: #f97316;"></span> Difficult (56-75)</span>
+        <span class="dash-legend-item"><span class="dash-legend-dot" style="background: #ef4444;"></span> Very Hard (76-100)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Common Factors Chart ────────────────────────────────── -->
+  <section class="dash-section">
+    <h2 class="dash-section-title">Most Common Cognitive Load Factors</h2>
+    <div class="dash-factors-chart" id="factors-chart">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- ─── Page History Table ──────────────────────────────────── -->
+  <section class="dash-section">
+    <h2 class="dash-section-title">Analyzed Pages</h2>
+    <div class="dash-table-wrap">
+      <table class="dash-table" id="pages-table">
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Score</th>
+            <th>Grade</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="pages-tbody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+      <div class="dash-empty" id="empty-state" hidden>
+        <div class="dash-empty-icon">📊</div>
+        <div class="dash-empty-text">No pages analyzed yet.</div>
+        <div class="dash-empty-hint">Browse the web with NeuroGlide to start collecting data.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ──────────────────────────────────────────────── -->
+  <footer class="dash-footer">
+    <span>NeuroGlide — AI-Driven Cognitive Accessibility</span>
+    <span class="dash-footer-version">v1.0.0</span>
+  </footer>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

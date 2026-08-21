@@ -1,0 +1,468 @@
+/* NeuroGlide — Content Script Styles
+ * All classes namespaced with 'neuroglide-' to avoid page conflicts.
+ */
+
+/* ─── Heatmap Overlays ────────────────────────────────────────────── */
+.neuroglide-heatmap {
+  outline-offset: 2px;
+  transition: outline-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neuroglide-heatmap-easy {
+  outline: 3px solid rgba(16, 185, 129, 0.6) !important;
+  box-shadow: inset 0 0 0 9999px rgba(16, 185, 129, 0.04) !important;
+}
+
+.neuroglide-heatmap-medium {
+  outline: 3px solid rgba(251, 191, 36, 0.6) !important;
+  box-shadow: inset 0 0 0 9999px rgba(251, 191, 36, 0.06) !important;
+}
+
+.neuroglide-heatmap-hard {
+  outline: 3px solid rgba(239, 68, 68, 0.6) !important;
+  box-shadow: inset 0 0 0 9999px rgba(239, 68, 68, 0.06) !important;
+}
+
+.neuroglide-heatmap-badge {
+  position: absolute !important;
+  top: 4px !important;
+  right: 4px !important;
+  padding: 2px 8px !important;
+  border-radius: 12px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  font-family: system-ui, -apple-system, sans-serif !important;
+  z-index: 10000 !important;
+  pointer-events: none !important;
+  line-height: 1.4 !important;
+}
+
+.neuroglide-badge-easy {
+  background: rgba(16, 185, 129, 0.9) !important;
+  color: white !important;
+}
+
+.neuroglide-badge-medium {
+  background: rgba(251, 191, 36, 0.9) !important;
+  color: #1a1a1a !important;
+}
+
+.neuroglide-badge-hard {
+  background: rgba(239, 68, 68, 0.9) !important;
+  color: white !important;
+}
+
+/* ─── Smart Focus Mode ────────────────────────────────────────────── */
+.neuroglide-hidden {
+  display: none !important;
+}
+
+.neuroglide-dimmed {
+  opacity: 0.15 !important;
+  filter: grayscale(100%) !important;
+  transition: opacity 0.4s ease, filter 0.4s ease !important;
+  pointer-events: none !important;
+}
+
+.neuroglide-dimmed:hover {
+  opacity: 0.6 !important;
+  filter: grayscale(50%) !important;
+  pointer-events: auto !important;
+}
+
+.neuroglide-focused {
+  outline: 2px solid rgba(13, 148, 136, 0.3) !important;
+  outline-offset: 4px !important;
+  border-radius: 4px !important;
+}
+
+/* ─── Guided Form Overlay ─────────────────────────────────────────── */
+.neuroglide-field-hidden {
+  display: none !important;
+}
+
+.neuroglide-guided-form-overlay {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 99999 !important;
+  padding: 16px !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+.neuroglide-gf-container {
+  max-width: 560px !important;
+  margin: 0 auto !important;
+  background: linear-gradient(145deg, #1a1a2e, #16213e) !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.05) !important;
+  padding: 28px !important;
+  color: #e2e8f0 !important;
+}
+
+.neuroglide-gf-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 20px !important;
+}
+
+.neuroglide-gf-logo {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #0d9488 !important;
+  white-space: nowrap !important;
+}
+
+.neuroglide-gf-progress {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.neuroglide-gf-progress-bar {
+  height: 6px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 3px !important;
+  overflow: hidden !important;
+}
+
+.neuroglide-gf-progress-fill {
+  height: 100% !important;
+  background: linear-gradient(90deg, #0d9488, #06b6d4) !important;
+  border-radius: 3px !important;
+  transition: width 0.4s ease !important;
+}
+
+.neuroglide-gf-progress-text {
+  font-size: 11px !important;
+  color: #94a3b8 !important;
+  text-align: center !important;
+}
+
+.neuroglide-gf-close {
+  background: none !important;
+  border: none !important;
+  color: #94a3b8 !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  padding: 4px !important;
+  border-radius: 4px !important;
+  line-height: 1 !important;
+}
+
+.neuroglide-gf-close:hover {
+  color: #f87171 !important;
+  background: rgba(248, 113, 113, 0.1) !important;
+}
+
+.neuroglide-gf-step-label {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  margin-bottom: 20px !important;
+  color: #f1f5f9 !important;
+}
+
+.neuroglide-gf-fields-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  margin-bottom: 20px !important;
+}
+
+.neuroglide-gf-field {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.neuroglide-gf-label {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #cbd5e1 !important;
+}
+
+.neuroglide-gf-required {
+  color: #f87171 !important;
+}
+
+.neuroglide-gf-input {
+  display: block !important;
+  width: 100% !important;
+  padding: 10px 14px !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 8px !important;
+  color: #f1f5f9 !important;
+  font-size: 15px !important;
+  font-family: inherit !important;
+  outline: none !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.neuroglide-gf-input:focus {
+  border-color: #0d9488 !important;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2) !important;
+}
+
+.neuroglide-gf-input.neuroglide-gf-error {
+  border-color: #f87171 !important;
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.2) !important;
+}
+
+.neuroglide-gf-field-help {
+  font-size: 12px !important;
+  color: #64748b !important;
+  line-height: 1.4 !important;
+}
+
+.neuroglide-gf-help {
+  font-size: 13px !important;
+  color: #94a3b8 !important;
+  margin-bottom: 16px !important;
+  min-height: 20px !important;
+}
+
+.neuroglide-gf-nav {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+
+.neuroglide-gf-btn {
+  padding: 10px 20px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-family: inherit !important;
+}
+
+.neuroglide-gf-prev {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #cbd5e1 !important;
+}
+
+.neuroglide-gf-prev:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.neuroglide-gf-prev:disabled {
+  opacity: 0.3 !important;
+  cursor: not-allowed !important;
+}
+
+.neuroglide-gf-next {
+  background: linear-gradient(135deg, #0d9488, #06b6d4) !important;
+  color: white !important;
+  flex: 1 !important;
+  max-width: 200px !important;
+}
+
+.neuroglide-gf-next:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3) !important;
+}
+
+.neuroglide-gf-submit {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+}
+
+/* ─── Error Prevention Styles ─────────────────────────────────────── */
+.neuroglide-field-error {
+  border-color: #f87171 !important;
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.15) !important;
+}
+
+.neuroglide-error-tooltip {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 12px !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+  margin-top: 4px !important;
+  line-height: 1.4 !important;
+  animation: neuroglide-fadeIn 0.2s ease !important;
+}
+
+.neuroglide-tooltip-error {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #f87171 !important;
+  border: 1px solid rgba(239, 68, 68, 0.2) !important;
+}
+
+.neuroglide-tooltip-warning {
+  background: rgba(251, 191, 36, 0.1) !important;
+  color: #fbbf24 !important;
+  border: 1px solid rgba(251, 191, 36, 0.2) !important;
+}
+
+.neuroglide-validation-summary {
+  background: linear-gradient(145deg, #1a1a2e, #16213e) !important;
+  border: 1px solid rgba(248, 113, 113, 0.3) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  margin-bottom: 20px !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  color: #e2e8f0 !important;
+  animation: neuroglide-slideDown 0.3s ease !important;
+}
+
+.neuroglide-vs-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 12px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+.neuroglide-vs-close {
+  margin-left: auto !important;
+  background: none !important;
+  border: none !important;
+  color: #94a3b8 !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+}
+
+.neuroglide-vs-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.neuroglide-vs-item {
+  padding: 10px 12px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+
+.neuroglide-vs-error {
+  background: rgba(239, 68, 68, 0.08) !important;
+  border-left: 3px solid #f87171 !important;
+}
+
+.neuroglide-vs-warning {
+  background: rgba(251, 191, 36, 0.08) !important;
+  border-left: 3px solid #fbbf24 !important;
+}
+
+.neuroglide-vs-fix {
+  display: block !important;
+  margin-top: 4px !important;
+  font-size: 12px !important;
+  color: #94a3b8 !important;
+}
+
+/* ─── Simplified Text Styles ──────────────────────────────────────── */
+.neuroglide-simplified {
+  position: relative !important;
+  background: rgba(13, 148, 136, 0.04) !important;
+  border-left: 3px solid rgba(13, 148, 136, 0.4) !important;
+  padding-left: 8px !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+.neuroglide-original-toggle {
+  display: inline-block !important;
+  margin-left: 8px !important;
+  padding: 2px 8px !important;
+  background: rgba(13, 148, 136, 0.15) !important;
+  color: #0d9488 !important;
+  border: 1px solid rgba(13, 148, 136, 0.3) !important;
+  border-radius: 4px !important;
+  font-size: 11px !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+}
+
+.neuroglide-original-toggle:hover {
+  background: rgba(13, 148, 136, 0.25) !important;
+}
+
+/* ─── Overlay Tooltips ────────────────────────────────────────────── */
+.neuroglide-simplify-overlay,
+.neuroglide-explain-tooltip {
+  position: absolute !important;
+  z-index: 999999 !important;
+  max-width: 400px !important;
+  background: linear-gradient(145deg, #1a1a2e, #16213e) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4) !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  color: #e2e8f0 !important;
+  animation: neuroglide-fadeIn 0.2s ease !important;
+  overflow: hidden !important;
+}
+
+.neuroglide-so-header,
+.neuroglide-et-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 10px 14px !important;
+  background: rgba(13, 148, 136, 0.1) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #0d9488 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.neuroglide-so-close,
+.neuroglide-et-close {
+  background: none !important;
+  border: none !important;
+  color: #94a3b8 !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  padding: 2px !important;
+}
+
+.neuroglide-so-content,
+.neuroglide-et-content {
+  padding: 14px !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+.neuroglide-so-original {
+  padding: 0 14px 14px !important;
+}
+
+.neuroglide-so-original details {
+  font-size: 12px !important;
+  color: #64748b !important;
+}
+
+.neuroglide-so-original summary {
+  cursor: pointer !important;
+  color: #94a3b8 !important;
+}
+
+.neuroglide-so-original p {
+  margin-top: 8px !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  opacity: 0.7 !important;
+}
+
+/* ─── Animations ──────────────────────────────────────────────────── */
+@keyframes neuroglide-fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes neuroglide-slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
